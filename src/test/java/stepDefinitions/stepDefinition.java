@@ -11,6 +11,24 @@ import java.util.List;
 
 public class stepDefinition {
 
+    @Given("Validate the browser")
+    public void validateTheBrowser() {
+        System.out.println("validate the browser");
+
+    }
+
+    @When("Browser is triggered")
+    public void browserIsTriggered() {
+        System.out.println("browser is triggered");
+
+    }
+
+    @Then("Check if browser is started")
+    public void checkIfBrowserIsStarted() {
+        System.out.println("Browser is Displayed");
+        System.out.println("Background keyword done ----------------");
+    }
+
     @Given("User is on Netbanking landing page")
     public void user_is_on_netbanking_landing_page() {
         System.out.println("User is on Netbanking landing page");
@@ -49,6 +67,7 @@ public class stepDefinition {
     public void userLoginIntoApplicationWithUsernameAndPassword(String username, String password) {
         System.out.println(username + ", " + password);
     }
+
 
 
 }
