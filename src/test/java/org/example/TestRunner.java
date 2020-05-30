@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
         features = "src/test/java/features",
         glue = {"stepDefinitions", "hooks"},
         tags = "@MobileTest"
-
 )
 public class TestRunner {
 }
