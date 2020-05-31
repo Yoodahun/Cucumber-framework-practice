@@ -7,10 +7,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html: target/reports/cucumber-html-report"},
+        plugin = {"pretty",
+                "html:target/reports/cucumber-html-report",
+                "junit:target/cukes.xml"
+        },
         features = "src/test/java/features",
-        glue = {"stepDefinitions", "hooks"},
-        tags = "@MobileTest"
+        glue = {"stepDefinitions", "hooks"}
+//        tags = "@MobileTest"
 )
 public class TestRunner {
 }

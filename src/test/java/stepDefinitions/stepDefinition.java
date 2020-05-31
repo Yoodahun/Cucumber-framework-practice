@@ -51,7 +51,7 @@ public class stepDefinition {
         if("true".equals(isDisplayed)) {
             Assert.assertTrue(true);
         } else {
-            Assert.assertTrue(true);
+            Assert.assertTrue(false);
         }
     }
 
