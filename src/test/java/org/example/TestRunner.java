@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
                 "junit:target/cukes.xml"
         },
         features = "src/test/java/features",
-        glue = {"stepDefinitions", "hooks"}
-//        tags = "@MobileTest"
+        glue = {"stepDefinitions", "hooks"},
+        tags = "@SeleniumTest"
 )
 public class TestRunner {
 }
