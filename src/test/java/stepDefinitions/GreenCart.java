@@ -1,31 +1,35 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.Homepage;
 
-public class GreenCart {
+import java.io.IOException;
 
-    private WebDriver driver;
+public class GreenCart extends Base {
+
+    private Homepage hp;
+
 
     @Given("User is on Greencart landing page")
-    public void userIsOnGreencartLandingPage() {
-        System.setProperty("webdriver.chrome.driver",
-                "/Users/yoodahun/Documents/Github/Java/Cucumber with Java-Build Automation Framework in lesser code/chromedriver");
+    public void userIsOnGreencartLandingPage() throws IOException {
+        initializeDriver();
 
-        driver = new ChromeDriver();
-        driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
     }
 
     @When("User searched for {string} Vegetable")
     public void userSearchedForVegetable(String vegetable) throws InterruptedException {
         // //input[@type='search']
-        driver.findElement(By.xpath("//input[@type='search']")).sendKeys(vegetable);
+        hp = new Homepage(driver);
+        hp.getSearch().sendKeys(vegetable);
         Thread.sleep(3000);
     }
 
@@ -37,4 +41,13 @@ public class GreenCart {
                           driver.findElement(By.cssSelector("h4.product-name")).getText().contains(vegetable)
                         );
     }
+
+    @And("Added items to cart")
+    public void addedItemsToCart() {
+        driver.findElement(By.cssSelector("a.increment")).click();
+        driver.findElement(By.xpath("//button[contains(text(), 'ADD TO CART')]")).click();
+
+    }
+
+
 }

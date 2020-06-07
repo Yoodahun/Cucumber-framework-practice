@@ -6,10 +6,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class stepDefinition {
+public class stepDefinition extends Base{
 
     @Given("Validate the browser")
     public void validateTheBrowser() {
@@ -66,6 +67,21 @@ public class stepDefinition {
     @When("User login into application with {string} and {string}")
     public void userLoginIntoApplicationWithUsernameAndPassword(String username, String password) {
         System.out.println(username + ", " + password);
+    }
+
+    @And("User proceeded to Checkout page for purchase")
+    public void userProceededToCheckoutPageForPurchase() {
+        driver.findElement(By.cssSelector("a.cart-icon")).click();
+        driver.findElement(By.xpath("//button[contains(text(), 'PROCEED TO CHECKOUT')]")).click();
+
+    }
+
+    @Then("Verify selected {string} items are displayed in checkout page")
+    public void verifySelectedItemsAreDisplayedInCheckoutPage(String vegetable) {
+        Assert.assertTrue(
+                driver.findElement(By.cssSelector("p.product-name")).getText().contains(vegetable)
+        );
+
     }
 
 
